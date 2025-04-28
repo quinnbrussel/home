@@ -12,6 +12,31 @@
       color: rgb(225, 230, 224);
       font-size: 18px;
     }
+    .back-button {
+      display: block;
+      margin: 10px 20px 0;
+      padding: 0;
+      cursor: pointer;
+    }
+    .back-button img {
+      max-width: 100px;
+      height: auto;
+      display: block;
+    }
+    .page-title {
+      text-align: center;
+      margin: 20px 0 10px;
+      color: rgb(225, 230, 224);
+    }
+    hr {
+      border: none;
+      border-top: 1px solid rgb(225, 230, 224);
+      margin: 0 0 20px;
+      width: 100%;
+    }
+    .content {
+      padding: 0 20px 40px;
+    }
     .container {
       display: flex;
       max-width: 1200px;
@@ -24,15 +49,13 @@
       box-sizing: border-box;
       text-align: center;
     }
-    .column:first-child {
-      border-right: 1px solid rgb(225, 230, 224);
-    }
+    .column:first-child,
     .column:nth-child(2) {
       border-right: 1px solid rgb(225, 230, 224);
     }
     .column img {
-      max-width: 200px;
-      width: 100%;
+      max-width: 300px;
+      width: auto;
       height: auto;
       display: block;
       margin: 10px auto;
@@ -40,43 +63,43 @@
     .column a {
       color: rgb(225, 230, 224);
       text-decoration: underline;
-      font-size: 1em;
-    }
-    .column hr {
-      border: none;
-      border-top: 1px solid rgb(225, 230, 224);
-      margin: 10px 0;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="column">
-      <h1><a href="index.html">Quinn Brussel</a></h1>
-      <p>[firstname]_[lastname] at brown dot edu</p>
-      <img src="portrait.jpg" alt="Portrait of Quinn Brussel">
-      <p>First Year Graduate Student</p>
-      <p><a href="https://www.brown.edu/academics/math/">Brown University Department of Mathematics</a></p>
-      <hr>
-      <p><a href="CV.pdf">Vita</a></p>
-    </div>
-    <div class="column">
-      <p>I am from San Luis Obispo, CA, and graduated from Harvard in 2025. Outside of mathematics, I enjoy running, cycling, playing the guitar, Americana, and traditional stories.</p>
-      <hr>
-      <p><a href="math.html">Math interests</a></p>
-      <hr>
-      <p><a href="expo.html">Expositions</a></p>
-      <hr>
-      <p><a href="running.html">Running</a></p>
-      <hr>
-      <p><a href="pictures.html">Pictures</a></p>
-    </div>
-    <div class="column">
-      <img src="mountains.jpeg" alt="Mountains">
-      <hr>
-      <img src="blackboard.JPG" alt="Blackboard">
-      <hr>
-      <img src="flammarion.JPG" alt="Flammarion">
+  <div class="content">
+    <a href="index.html" class="back-button">
+      <img src="QB.png" alt="Home">
+    </a>
+    <h1 class="page-title">Quinn Brussel</h1>
+    <hr>
+    <div class="container">
+      <div class="column">
+        <p>[firstname]_[lastname] at brown dot edu</p>
+        <img src="portrait.jpg" alt="Portrait of Quinn Brussel">
+        <p>First Year Graduate Student</p>
+        <p><a href="https://www.brown.edu/academics/math/">Brown University Department of Mathematics</a></p>
+        <hr>
+        <p><a href="CV.pdf">Vita</a></p>
+      </div>
+      <div class="column">
+        <p>I am from San Luis Obispo, CA, and graduated from Harvard in 2025. Outside of mathematics, I enjoy running, cycling, playing the guitar, Americana, and traditional stories.</p>
+        <hr>
+        <p><a href="math.html">Math interests</a></p>
+        <hr>
+        <p><a href="expo.html">Expositions</a></p>
+        <hr>
+        <p><a href="running.html">Running</a></p>
+        <hr>
+        <p><a href="pictures.html">Pictures</a></p>
+      </div>
+      <div class="column">
+        <img src="mountains.jpeg" alt="Mountains">
+        <hr>
+        <img src="blackboard.JPG" alt="Blackboard">
+        <hr>
+        <img src="flammarion.JPG" alt="Flammarion">
+      </div>
     </div>
   </div>
 </body>
