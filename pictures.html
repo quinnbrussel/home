@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pictures</title>
+  <!-- Optional MathJax -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background-color: rgb(21, 66, 15);
+      font-family: Georgia, serif;
+      color: rgb(225, 230, 224);
+      font-size: 18px;
+    }
+    .back-button {
+      display: block;
+      margin: 10px 20px 0;
+      padding: 0;
+      cursor: pointer;
+      position: relative;
+      z-index: 1000;
+    }
+    .back-button img {
+      display: block;
+      max-width: 100px;
+      height: auto;
+    }
+    .content {
+      padding: 20px 20px 40px;
+    }
+    .page-title {
+      text-align: center;
+      margin: 20px 0 10px;
+    }
+    .page-title + hr {
+      border: none;
+      border-top: 1px solid rgb(225, 230, 224);
+      margin: 0 0 20px;
+      width: 100%;
+    }
+    .columns {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .column {
+      flex: 1;
+      padding: 0 10px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .column:not(:last-child) {
+      border-right: 1px solid rgb(225, 230, 224);
+    }
+    .column img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .column figcaption {
+      margin-top: 8px;
+      font-style: italic;
+    }
+    /* Cross-column separator */
+    hr.cross-separator {
+      border: none;
+      border-top: 1px solid rgb(225, 230, 224);
+      margin: 20px 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <a href="index.html" class="back-button">
+      <img src="QB.png" alt="Back to Home">
+    </a>
+    <h1 class="page-title">Pictures</h1>
+    <hr>
+    <div class="columns">
+      <div class="column">
+        <figure>
+          <img src="bluegrass.jpg" alt="The Handsome Boys Pickin' Band">
+          <figcaption>The Handsome Boys Pickin' Band at the OFA 50th (2025).</figcaption>
+        </figure>
+      </div>
+      <div class="column">
+        <figure>
+          <img src="seminar.jpeg" alt="Harvard Algebraic Dynamics Seminar">
+          <figcaption>The Harvard Algebraic Dynamics Seminar (2025).</figcaption>
+        </figure>
+      </div>
+      <div class="column">
+        <figure>
+          <img src="garcia.jpeg" alt="Jerry Garcia">
+        </figure>
+      </div>
+    </div>
+    <hr class="cross-separator">
+  </div>
+</body>
+</html>
