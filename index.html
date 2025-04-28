@@ -7,9 +7,10 @@
   <style>
     body {
       margin: 0;
-      background-color: forestgreen;
+      background-color: rgb(21, 66, 15);
       font-family: Georgia, serif;
-      color: black;
+      color: rgb(225, 230, 224);
+      font-size: 18px;
     }
     .container {
       display: flex;
@@ -21,6 +22,9 @@
       box-sizing: border-box;
       text-align: center;
     }
+    .column:first-child {
+      border-right: 1px solid rgb(225, 230, 224);
+    }
     .column img {
       max-width: 200px;
       height: auto;
@@ -28,8 +32,14 @@
       margin: 10px auto;
     }
     .column a {
-      color: black;
+      color: rgb(225, 230, 224);
       text-decoration: underline;
+      font-size: 1em;
+    }
+    .column hr {
+      border: none;
+      border-top: 1px solid rgb(225, 230, 224);
+      margin: 10px 0;
     }
   </style>
 </head>
@@ -37,6 +47,7 @@
   <div class="container">
     <div class="column">
       <h1><a href="index.html">Quinn Brussel</a></h1>
+      <p>[firstname]_[lastname] at brown dot edu</p>
       <img src="portrait.jpg" alt="Portrait of Quinn Brussel">
       <p>First Year Graduate Student</p>
       <p><a href="https://www.brown.edu/academics/math/">Brown University Department of Mathematics</a></p>
@@ -44,7 +55,13 @@
       <p><a href="CV.pdf">Vita</a></p>
     </div>
     <div class="column">
-      <!-- Column 2 content goes here -->
+      <p><a href="math.html">Math interests</a></p>
+      <hr>
+      <p><a href="expo.html">Expositions</a></p>
+      <hr>
+      <p><a href="running.html">Running</a></p>
+      <hr>
+      <p><a href="pictures.html">Pictures</a></p>
     </div>
     <div class="column">
       <!-- Column 3 content goes here -->
