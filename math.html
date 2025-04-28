@@ -39,4 +39,161 @@
       border: none;
       border-top: 1px solid rgb(225, 230, 224);
       margin: 0 0 20px;
-      wi
+      width: 100%;
+    }
+    .columns {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .column {
+      flex: 1;
+      padding: 10px;
+      box-sizing: border-box;
+      text-align: left;
+    }
+    .column:first-child {
+      border-right: 1px solid rgb(225, 230, 224);
+    }
+    .column img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 10px auto;
+    }
+    .controls {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .controls button {
+      background-color: rgb(225, 230, 224);
+      color: rgb(21, 66, 15);
+      border: none;
+      padding: 8px 12px;
+      margin: 0 5px;
+      font-family: Georgia, serif;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #mandelbrotCanvas {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 10px auto;
+      cursor: grab;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <a href="index.html" class="back-button">
+      <img src="QB.png" alt="Back to Home">
+    </a>
+    <h1 class="page-title">Math Interests</h1>
+    <hr>
+    <div class="columns">
+      <div class="column">
+        <p>I am primarily interested in complex analysis, dynamical systems, and geometry. Lately, I have been focused on complex dynamics, the study of iterated holomorphic maps on Riemann surfaces. My undergraduate senior thesis concerned the Mandelbrot set, and its conjectured local connectivity.</p>
+        <p>I am also interested in hyperbolic geometry, Thurston theory, and anything Curt McMullen has written a paper on.</p>
+        <p>Recently, I have been learning about ergodic theory and dynamics in both measure theoretic and algebraic settings. I am interested in the interplay between each of these fields.</p>
+        <p>For example, consider the elliptic curve \(E \subset \mathbb{P}^1 \times \mathbb{P}^1 \subset \mathbb{P}^2\), defined by \((1 + x^2)(1 + y^2) + 7xy = 3\). It's real locus \(E \cap \mathbb{R}^2 \times \mathbb{R}^2\) resembles a bowtie. Since its defining equation is quadratic in both \(x\) and \(y\), \(E\) admits a regular involution \(\iota_x\), which swaps the \(y\) coordinates for fixed \(x\), and a regular involution \(\iota_y\), which swaps the \(x\) coordinates with \(y\) fixed. Let \(\phi = \iota_x \circ \iota_y\).</p>
+        <p>Alternatively, we may consider \(E\) as a Riemann surface, isomorphic to a quotient \(\mathbb{C}/\Lambda\), with \(\Lambda \subset \mathbb{C}\) a lattice. Then \(\phi\) is conjugate to a conformal isomorphism on \(\mathbb{C}/\Lambda\).</p>
+        <p>Since any elliptic curve admits a single global nowhere-vanishing algebraic 1-form \(\omega\) up to scaling, we can show that \(\phi^*\omega = \omega\), so that \(\omega\) is measure preserving with respect to the measure given by \(\omega\). Indeed, one can show that \(\phi\) is ergodic. Its restriction to the bowtie \(E \cap \mathbb{R}^2\) is isomorphic as a measurable dynamical system to an irrational rotation of \(S^1\).</p>
+      </div>
+      <div class="column">
+        <img src="bowtie.png" alt="Bowtie orbit" style="width:66.666%; display:block; margin:10px auto;">
+        <p style="text-align:center; margin-top:5px;">An orbit under the map \(\phi\) on the bowtie, after 100 iterations.</p>
+        <hr>
+        <div class="controls">
+          <button id="zoomIn">Zoom In</button>
+          <button id="zoomOut">Zoom Out</button>
+        </div>
+        <canvas id="mandelbrotCanvas"></canvas>
+        <p style="text-align:center; margin-top:5px;">The Mandelbrot set.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+    const canvas = document.getElementById('mandelbrotCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    function resizeCanvas() {
+      width = canvas.width = canvas.clientWidth;
+      height = canvas.height = width;
+    }
+
+    let centerX = -0.5;
+    let centerY = 0;
+    let scale = 3;
+
+    let isDragging = false;
+    let startX, startY;
+
+    function draw() {
+      for (let px = 0; px < width; px++) {
+        for (let py = 0; py < height; py++) {
+          const x0 = centerX + (px - width / 2) / width * scale;
+          const y0 = centerY + (py - height / 2) / height * scale;
+          let x = 0, y = 0;
+          const maxIter = 200;
+          let iter = 0;
+          while (x*x + y*y <= 4 && iter < maxIter) {
+            const xTemp = x*x - y*y + x0;
+            y = 2*x*y + y0;
+            x = xTemp;
+            iter++;
+          }
+          const hue = Math.floor(360 * iter / maxIter);
+          const color = iter === maxIter ? 'black' : `hsl(${hue}, 100%, 50%)`;
+          ctx.fillStyle = color;
+          ctx.fillRect(px, py, 1, 1);
+        }
+      }
+    }
+
+    canvas.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.clientX;
+      startY = e.clientY;
+      canvas.style.cursor = 'grabbing';
+    });
+    canvas.addEventListener('mousemove', e => {
+      if (isDragging) {
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        centerX -= dx / width * scale;
+        centerY -= dy / height * scale;
+        startX = e.clientX;
+        startY = e.clientY;
+        draw();
+      }
+    });
+    ['mouseup','mouseleave'].forEach(evt =>
+      canvas.addEventListener(evt, () => {
+        isDragging = false;
+        canvas.style.cursor = 'grab';
+      })
+    );
+
+    document.getElementById('zoomIn').addEventListener('click', () => {
+      scale *= 0.8;
+      draw();
+    });
+    document.getElementById('zoomOut').addEventListener('click', () => {
+      scale *= 1.25;
+      draw();
+    });
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      draw();
+    });
+
+    // Initial setup and draw
+    resizeCanvas();
+    canvas.style.cursor = 'grab';
+    draw();
+  </script>
+</body>
+</html>
