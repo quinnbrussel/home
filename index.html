@@ -14,6 +14,8 @@
     }
     .container {
       display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
       min-height: 100vh;
     }
     .column {
@@ -25,8 +27,12 @@
     .column:first-child {
       border-right: 1px solid rgb(225, 230, 224);
     }
+    .column:nth-child(2) {
+      border-right: 1px solid rgb(225, 230, 224);
+    }
     .column img {
       max-width: 200px;
+      width: 100%;
       height: auto;
       display: block;
       margin: 10px auto;
@@ -55,6 +61,8 @@
       <p><a href="CV.pdf">Vita</a></p>
     </div>
     <div class="column">
+      <p>I am from San Luis Obispo, CA, and graduated from Harvard in 2025. Outside of mathematics, I enjoy running, cycling, playing the guitar, Americana, and traditional stories.</p>
+      <hr>
       <p><a href="math.html">Math interests</a></p>
       <hr>
       <p><a href="expo.html">Expositions</a></p>
@@ -64,7 +72,11 @@
       <p><a href="pictures.html">Pictures</a></p>
     </div>
     <div class="column">
-      <!-- Column 3 content goes here -->
+      <img src="mountains.jpeg" alt="Mountains">
+      <hr>
+      <img src="blackboard.JPG" alt="Blackboard">
+      <hr>
+      <img src="flammarion.JPG" alt="Flammarion">
     </div>
   </div>
 </body>
